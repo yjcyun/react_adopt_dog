@@ -18,7 +18,7 @@ const Dog = ({ dog }) => {
         <span>
           {breed}
           <BsDot />
-          {age > 1 ? `${age} years` : `${age}year`}<BsDot />
+          {age > 1 ? `${age} years` : `${age} year`}<BsDot />
           {sex}
         </span>
       </div>
@@ -32,11 +32,9 @@ Dog.propTypes ={
     slug: PropTypes.string.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     sex: PropTypes.string.isRequired,
-    age: PropTypes.number.isRequired,
+    age: PropTypes.string.isRequired,
     breed: PropTypes.string.isRequired
   })
 }
-
-
 
 export default Dog;

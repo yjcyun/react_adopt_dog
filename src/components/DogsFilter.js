@@ -8,6 +8,7 @@ const getUnique = (items, value) => {
 }
 
 const DogsFilter = ({ dogs }) => {
+  
   const context = useContext(DogContext);
   const { handleChange, breed, age, size, energy, sex } = context;
 
@@ -103,7 +104,7 @@ const DogsFilter = ({ dogs }) => {
         </div>
         {/* end of select gender */}
 
-        {/* select goodwith */}
+        {/* select energy level */}
         <div className="form-group">
           <label htmlFor="energy">energy level</label>
           <select
@@ -115,14 +116,10 @@ const DogsFilter = ({ dogs }) => {
             {energyLvl}
           </select>
         </div>
-        {/* end of select goodwith */}
-
-
-
-
+        {/* end of select energy level */}
       </form>
     </section>
   )
 }
 
-export default DogsFilter
+export default DogsFilter;

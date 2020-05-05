@@ -2,6 +2,7 @@ import React from 'react';
 import Dog from './Dog';
 
 const DogsList = ({ dogs }) => {
+  console.log(dogs.length);
   if (dogs.length === 0) {
     return (
       <div className="empty-search">

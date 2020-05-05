@@ -19,7 +19,7 @@ class FeaturedDogs extends Component {
       <section className="featured-dogs">
         <Title title="This week's" title2="featured dogs" />
         <div className="featured-dogs-center">
-          {loading ? <Loading /> : dogs}
+          {loading ? <Loading />: dogs}
         </div>
       </section>
     )

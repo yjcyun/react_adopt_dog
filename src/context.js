@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import items from './data';
+import Client from './Contentful';
 
 const DogContext = React.createContext();
 
@@ -12,20 +12,32 @@ class DogProvider extends Component {
     breed: 'all',
     size: 'all',
     energy: 'all',
-    gender: 'all',
+    sex: 'all',
     age: 'all'
   };
 
-  componentDidMount() {
-    let dogs = this.formatData(items);
-    let featuredDogs = dogs.filter(dog => dog.featured === true);
+  getData = async () => {
+    try {
+      let response = await Client.getEntries({
+        content_type: "adoptDog",
+        order:"sys.createdAt"
+      });
+      let dogs = this.formatData(response.items);
+      let featuredDogs = dogs.filter(dog => dog.featured === true);
 
-    this.setState({
-      dogs: dogs,
-      sortedDogs: dogs,
-      featuredDogs: featuredDogs,
-      loading: false,
-    });
+      this.setState({
+        dogs: dogs,
+        sortedDogs: dogs,
+        featuredDogs: featuredDogs,
+        loading: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  componentDidMount() {
+    this.getData()
   };
 
   formatData = arr => {
@@ -51,7 +63,6 @@ class DogProvider extends Component {
     const target = e.target;
     const name = target.name;
     const value = target.value;
-
     this.setState({
       [name]: value
     }, this.filterDogs);
@@ -64,7 +75,8 @@ class DogProvider extends Component {
 
     // filter breed
     if (breed !== 'all') {
-      tempDogs = tempDogs.filter(dog => dog.breed === breed)
+      tempDogs = tempDogs.filter(dog => dog.breed === breed);
+      console.log(tempDogs);
     }
 
     // filter by age
@@ -89,8 +101,10 @@ class DogProvider extends Component {
 
     this.setState({
       sortedDogs: tempDogs
-    })
+    });
   };
+
+
 
   render() {
     return (
@@ -111,8 +125,7 @@ export function withDogConsumer(Component) {
   return function ConsumerWrapper(props) {
     return (
       <DogConsumer>
-        {value =>
-          <Component {...props} context={value} />}
+        {value => <Component {...props} context={value} />}
       </DogConsumer>
     );
   }

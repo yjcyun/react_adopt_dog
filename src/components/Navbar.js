@@ -32,12 +32,6 @@ class Navbar extends Component {
             <li>
               <Link to="/dogs">adopt</Link>
             </li>
-            <li>
-              <Link to="/about">about</Link>
-            </li>
-            <li>
-              <Link to="/volunteer">volunteer</Link>
-            </li>
           </ul>
         </div>
       </nav>
