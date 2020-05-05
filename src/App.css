@@ -1,38 +1,570 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --green: #00b894;
+  --grey: #dfe6e9;
+  --mainBlack: #222;
+  --mainWhite: #fff;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 3px;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: var(--mainBlack);
+  background: var(--mainWhite);
+  line-height: 1.4;
+  padding-top: 71px;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  text-decoration: none;
+  letter-spacing: var(--mainSpacing);
+  color: var(--mainWhite);
+  background: var(--green);
+  padding: 0.7rem 1rem;
+  border: 3px solid var(--green);
+  transition: var(--mainTransition);
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--mainWhite);
+}
+
+.btn-primary.homepage:hover {
+  color: var(--mainBlack);
+}
+
+.loading img {
+  width: 100%;
+  height: 30%;
+}
+
+.error {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2rem 0;
+}
+
+.error .btn-primary:hover {
+  color: var(--mainBlack)
+}
+
+.empty-search {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  letter-spacing: var(--mainSpacing);
+}
+
+/* navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: var(--grey);
+  z-index: 1;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.nav-icon {
+  font-size: 1.7rem;
+  color: var(--green);
+}
+
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  transition: var(--mainTransition);
+  list-style-type: none;
+}
+
+.nav-links a {
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  color: var(--mainBlack);
+  transition: var(--mainTransition);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: var(--green);
+}
+
+.show-nav {
+  height: 120px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-btn {
+    display: none;
+  }
+
+  .nav-center {
+    max-width: 1350px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links a {
+    margin: 0 1rem;
+    padding: 0.5rem 0;
+  }
+}
+
+/* end of navbar */
+
+/* hero */
+.defaultHero,
+.dogsHero,
+.errorHero {
+  min-height: calc(100vh - 71px);
+  background: url('./images/bcg-1.jpg');
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+.dogsHero {
+  background-image: url('./images/dogspage.jpg');
+  min-height: 60vh;
+  align-items: center;
+}
+
+.errorHero {
+  background-image: url('./images/404.jpg');
+  background-position: center;
+  background-size: 100% 100%;
+  align-items:center;
+}
+
+/* end of hero */
+
+/* banner */
+.defaultBanner,
+.dogBanner, .errorBanner {
+  display: inline-block;
+  text-align: center;
+  color: var(--mainBlack);
+  padding: 2rem;
+  margin: 0 1rem;
+}
+
+.dogBanner, .errorBanner {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.dogBanner h1, .errorBanner h1 {
+  color: var(--mainWhite);
+}
+
+.defaultBanner h1,
+.dogBanner h1,.errorBanner h1 {
+  font-size: 2.5rem;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.banner-title2,
+.title2 {
+  color: var(--green);
+  margin-left: 0.6rem;
+  font-family: 'Lobster',
+    cursive;
+}
+
+.defaultBanner div,
+.dogBanner div, .errorBanner div {
+  width: 10rem;
+  height: 5px;
+  background-color: var(--mainBlack);
+  margin: 1.5rem auto;
+}
+
+.dogBanner div, .errorBanner div {
+  background-color: var(--mainWhite);
+}
+
+.defaultBanner p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.errorBanner p{
+  color: var(--mainWhite);
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 768px) {
+  .defaultBanner h1 {
+    font-size: 3.5rem;
+  }
+}
+
+/* end of banner */
+
+/* services */
+.services {
+  padding: 5rem 0;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.services-center {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  grid-column-gap: 50px;
+  grid-row-gap: 2.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.service span {
+  display: inline-block;
+  color: var(--green);
+  font-size: 2.5rem;
+}
+
+.services h6 {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  margin: 1.2rem 0;
+}
+
+.services p {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 992px) {
+  .services-center {
+    width: 95vw;
+    max-width: 1170px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (min-width: 1200px) {
+  .services p {
+    width: 100%;
   }
 }
+
+/* end of services */
+
+/* title */
+.section-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-title h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* end of title */
+
+/* featured dogs */
+.featured-dogs {
+  padding: 5rem 0;
+}
+
+.featured-dogs-center {
+  width: 80vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 40px;
+}
+
+@media screen and (min-width: 776px) {
+  .featured-dogs-center {
+    width: 90vw;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .featured-dogs-center {
+    width: 95vw;
+    max-width: 1170px;
+  }
+}
+
+/* end of featured dogs */
+
+/* dog */
+.dog {
+  box-shadow: 1px 4px 8px -3px rgba(125, 125, 125, 1);
+  transition: var(--mainTransition);
+  border-radius: 10px;
+}
+
+.dog:hover {
+  box-shadow: 13px 17px 33px -3px rgba(171, 166, 171, 1);
+}
+
+.dog:not(.img-container) {
+  background-color: var(--green);
+}
+
+.img-container {
+  position: relative;
+}
+
+.img-container img {
+  width: 100%;
+  display: block;
+  transition: var(--mainTransition);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  height: 200px;
+}
+
+.dog-text-container {
+  padding: 0.5rem 1rem;
+  color: var(--mainWhite);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-transform: capitalize;
+}
+
+.dog-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0);
+  transition: var(--mainTransition);
+
+}
+
+.img-container:hover {
+  background-color: var(--mainBlack);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.img-container:hover img {
+  opacity: 0.5;
+}
+
+.img-container:hover .dog-link {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-primary.dog-link {
+  padding: 0.5rem;
+  width: 70%;
+  text-align: center;
+}
+
+/* end of dog */
+
+/* single-dog */
+.single-dog {
+  padding: 5rem 0 0 0;
+}
+
+.single-dog-name {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.single-dog-name a {
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.single-dog-name .btn-primary:hover {
+  color: var(--mainBlack);
+}
+
+.single-dog-info {
+  width: 80vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 2rem auto;
+}
+
+.desc,
+.info {
+  margin: 1rem 0;
+}
+
+.desc h3,
+.info h3 {
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+}
+
+.desc p {
+  line-height: 1.5;
+}
+
+.info h6 {
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
+.dog-health {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.health {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.health li {
+  margin-bottom: 0.6rem;
+}
+
+@media screen and (min-width: 992px) {
+
+  .single-dog-info,
+  .dog-health,
+  .single-dog-name {
+    width: 95vw;
+    max-width: 1170px;
+  }
+
+  .single-dog-info {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-column-gap: 2rem;
+  }
+
+  .info {
+    padding-left: 3rem;
+  }
+}
+
+/* end of single-dog */
+
+/* dogs list */
+.dogslist {
+  padding: 5rem 0;
+}
+
+.dogslist-center {
+  width: 80vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 30px;
+}
+
+@media screen and (min-width: 776px) {
+  .dogslist-center {
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .dogslist-center {
+    width: 95vw;
+    max-width: 1170px;
+  }
+}
+
+/* end of dogs list */
+
+/* filter */
+.filter-container {
+  padding: 5rem 0 0 0;
+}
+
+.filter-form {
+  width: 60vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(202px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 40px;
+}
+
+.form-group {
+  text-transform: capitalize;
+}
+
+.form-group label {
+  display: block;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem;
+  background: transparent;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+@media screen and (min-width: 776px) {
+  .filter-form {
+    width: 70vw;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .filter-form {
+    width: 95vw;
+    max-width: 1170px;
+  }
+}
+
+/* end of filter */
